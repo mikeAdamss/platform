@@ -1,0 +1,12 @@
+---
+
+# Install things that much exist in all cluster/environment
+- name: Deploy/Ensure kubernetes applications
+  hosts: localhost  
+  gather_facts: true  
+
+  # see `./roles/<ARRAY ENTRY>` for details of each
+  # of the following array entries of things that
+  # we're deploying
+  roles:    
+    - "{{ env_info.label }}/linked-data-repository"

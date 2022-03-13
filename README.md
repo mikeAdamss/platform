@@ -1,2 +1,53 @@
-# platform
-iac repo
+# Platform
+
+## Use Cases
+
+### Use Case 1: Application Environments
+
+We require symetrical environments for application deployments, e.g: a CMS _could_ need to be deployable into develop, production, test, staging etc, this means:
+
+- envionments should be _utilising identical infrastucture components for parity_ however ... 
+- resources scaling and the code version/branches being deployed should **not** be identical, e.g: you don't spin up a test environment with the same resources as a production one.
+
+This means we need _composable environments_. So shared infrastructure as code definitions/process that can be nuanced for purpose via light per-environment configuration.
+
+Simple put `infrastructure as code + configuration == environment`. 
+
+The setup in `./environment` provides this facility.
+
+Please see `./documentation/application-environments.md` for more details of what we're talking about when we say "application environment".
+
+### Use Case 2: Single Instance Infrastructure
+
+There are some groupings of infrastructure components that we probably _don't_ want to deploy across multiple environments, some examples:
+
+- software build pipelines.
+- spikes and light deployments (example: The Solar System of Stats)
+- (possibly) data pipelines, Jenkins etc.
+
+These more light weight single use provision+orchestration stacks can also be defined within this repo (e.g`./data-pipelines`), the required setup for using our infrastructure as code tools (see following section) to do this are detailed in the relevant sections.
+
+## Stack
+
+We are using three principle infrastructure as code tools.
+
+### terraform
+A state aware tool for declaratively provisioning infrastructure components from google cloud.
+
+### ansible
+An declarative orchestration tool that can interact directly with GCP infrastructure, for example: ensuring a specific sub set of our helm charts is deployed to a specific GKE cluster (i.e develop branches to the develop environment), or more broadly: ensuring thing A is installed in compute instance B, etc.
+
+Simply put, while terraform will get you servers and cluster, its ansible that will do any required install and setup and put those servers and clusters into the desired _ready state_.
+
+**Note:** it's important to understand that while this idea of a _ready state_ is required for provisioning (and syncronising) environments, it also means ansible can be used as a _very_ powerful disaster recovery or quick fix tool as we can _enforce_ that _ready_state_ on demand.
+
+
+**helm**:
+A tool for defining application deployments to kubernetes.
+
+
+## Conventions
+
+The terraform and ansible code is defined within appropriate sub directories of a given purpose (i.e for environments look in `./environments/terraform` and `./environments/ansible`).
+
+I've defined the `helm` charts within a `helm` sub directory of `/ansible`, this is purely a convenience for relatively referencing locally defined charts from within the ansible playbooks.

@@ -1,0 +1,18 @@
+---
+
+- name: Set dir for relative helm chart references
+  set_fact: local_charts='{{ lookup('env', 'PWD') }}/helm'
+
+- name: Ensure Helm Diff
+  kubernetes.core.helm_plugin:
+    state: present
+    plugin_path: https://github.com/databus23/helm-diff
+
+- name: Deploy latest version of the api inside the linked-data-repository namespace
+  kubernetes.core.helm:
+    state: present
+    force: true
+    name: ldr-api
+    chart_ref: '{{ local_charts }}/develop/ldr'
+    release_namespace: linked-data-repository
+    create_namespace: true
