@@ -23,7 +23,7 @@ There are some groupings of infrastructure components that we probably _don't_ w
 - spikes and light deployments (example: The Solar System of Stats)
 - (possibly) data pipelines, Jenkins etc.
 
-These more light weight single use provision+orchestration stacks can also be defined within this repo (e.g`./data-pipelines`).
+These more light weight single use provision+orchestration stacks can also be defined within this repo via addng an appropriate sub directory (e.g`./data-pipelines`) with the approriate infrastructure code therein (see following information on stack).
 
 **TODO: an example of this**.
 
@@ -50,9 +50,9 @@ A tool for defining indivdual application deployments via kubernetes.
 
 The terraform and ansible code is defined within appropriate sub directories of a given purpose (i.e for environments look in `./environments/terraform` and `./environments/ansible`).
 
-I've defined the `helm` charts within a `helm` sub directory of the appropriate `/ansible` sub dierctories, this is purely a convenience for relatively referencing locally defined charts from within the ansible playbooks.
+We're currently defining the `helm` charts within a `helm` sub directory of the appropriate `/ansible` sub dierctories, this is purely a convenience for relatively referencing locally defined charts from within the ansible playbooks.
 
 
 ## Usage
 
-Instructions on using the different parts of the stack are include via readmes in the apropriate sub directories.
+Instructions on using the different parts of the stack are include via readmes in the appropriate sub directories.
