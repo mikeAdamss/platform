@@ -23,7 +23,7 @@ There are some groupings of infrastructure components that we probably _don't_ w
 - spikes and light deployments (example: The Solar System of Stats)
 - (possibly) data pipelines, Jenkins etc.
 
-These more light weight single use provision+orchestration stacks can also be defined within this repo via addng an appropriate sub directory (e.g`./data-pipelines`) with the approriate infrastructure code therein (see following information on stack).
+These more light weight single use provision+orchestration stacks can also be defined within this repo via adding an appropriate sub directory (e.g`./data-pipelines`) with the approriate infrastructure code therein (see following information on stack).
 
 **TODO: an example of this**.
 

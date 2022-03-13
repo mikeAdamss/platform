@@ -3,7 +3,7 @@
 
 ## What is it?
 
-Terraform is for declaratively provisioning infrastructure. A `remote state` outling the infrastructure _we currently have_ will already have been created.
+Terraform is for declaratively provisioning infrastructure. A `remote state` outling the infrastructure _we currently have_ will already have been created and stored on GCP.
 
 When you run terraform, it will compare that `remote state` to the `desired state` as outlined by the **.tf` files in this directory** and let you know what would infrastructure changes it would need to make to bring the remote state in line with the desired state - its then up to you to confirm the changes or not.  
 
@@ -22,7 +22,7 @@ When you run terraform, it will compare that `remote state` to the `desired stat
 
 6.) Point to the `terraform_service_account.json` file with the environment variable `GOOGLE_CREDENTIALS` (for ansible).
 
-You can change the path as you need, **just don't put it anywhere that it could end up it git**.
+You can change the path as you need, **just don't put it anywhere that it could end up in git**.
 
 
 ## Using Terraform
