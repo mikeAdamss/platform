@@ -43,7 +43,7 @@ Simply put, while terraform will get you servers and cluster, its ansible that w
 
 
 **helm**:
-A tool for defining application deployments to kubernetes.
+A tool for defining indivdual application deployments via kubernetes.
 
 
 ## Conventions
