@@ -56,3 +56,15 @@ We're currently defining the `helm` charts within a `helm` sub directory of the 
 ## Usage
 
 Instructions on using the different parts of the stack are include via readmes in the appropriate sub directories.
+
+## FAQ
+
+**Why use ansible to load helm charts to kubernetes?**
+
+.... when you can just use helm?
+
+- its declarative.
+- it wraps helm, so you're doing the same thing anyway.
+- it can orchestrate **all** GCP resources as well as non GCP resources (for example, it can connect to and configure off the shelf database images) not just kubernetes.
+- its a (possibly _the_) industry standard orchestration tool with a huge selection of high quality, well documented modules and extensions.
+- under the hood is composed of (and extended via) simple python modules, given our team skillset there's not much we cant automate should we want to.
