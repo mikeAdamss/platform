@@ -13,9 +13,7 @@ This means we need _composable environments_. So shared infrastructure as code d
 
 Simple put `infrastructure as code + configuration == environment`. 
 
-The setup in `./environment` provides this facility.
-
-Please see `./documentation/application-environments.md` for more details of what we're talking about when we say "application environment".
+The setup in `./environment` provides this facility. See the included readme's for more details.
 
 ### Use Case 2: Single Instance Infrastructure
 
@@ -25,7 +23,7 @@ There are some groupings of infrastructure components that we probably _don't_ w
 - spikes and light deployments (example: The Solar System of Stats)
 - (possibly) data pipelines, Jenkins etc.
 
-These more light weight single use provision+orchestration stacks can also be defined within this repo (e.g`./data-pipelines`), the required setup for using our infrastructure as code tools (see following section) to do this are detailed in the relevant sections.
+These more light weight single use provision+orchestration stacks can also be defined within this repo (e.g`./data-pipelines`).
 
 ## Stack
 
@@ -35,7 +33,7 @@ We are using three principle infrastructure as code tools.
 A state aware tool for declaratively provisioning infrastructure components from google cloud.
 
 ### ansible
-An declarative orchestration tool that can interact directly with GCP infrastructure, for example: ensuring a specific sub set of our helm charts is deployed to a specific GKE cluster (i.e develop branches to the develop environment), or more broadly: ensuring thing A is installed in compute instance B, etc.
+An declarative orchestration tool that can interact directly with GCP infrastructure, for example: ensuring a specific sub set of our helm charts is deployed to a specific GKE cluster (i.e develop release of images are deployed to the develop gke server in the develop environment), or more broadly: ensuring thing A is installed in compute instance B, etc.
 
 Simply put, while terraform will get you servers and cluster, its ansible that will do any required install and setup and put those servers and clusters into the desired _ready state_.
 
@@ -50,4 +48,4 @@ A tool for defining indivdual application deployments via kubernetes.
 
 The terraform and ansible code is defined within appropriate sub directories of a given purpose (i.e for environments look in `./environments/terraform` and `./environments/ansible`).
 
-I've defined the `helm` charts within a `helm` sub directory of `/ansible`, this is purely a convenience for relatively referencing locally defined charts from within the ansible playbooks.
+I've defined the `helm` charts within a `helm` sub directory of the appropriate `/ansible` sub diectories, this is purely a convenience for relatively referencing locally defined charts from within the ansible playbooks.

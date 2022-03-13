@@ -5,8 +5,6 @@
   hosts: localhost  
   gather_facts: true  
 
-  # see `./roles/<ARRAY ENTRY>` for details of each
-  # of the following array entries of things that
-  # we're deploying
-  roles:    
-    - "{{ env_info.label }}/linked-data-repository"
+  # TODO: must be some way to map the whole list directly
+  roles: 
+    - "{{ env_info.ansible_role_list[0] }}"

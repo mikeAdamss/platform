@@ -13,6 +13,6 @@
     state: present
     force: true
     name: ldr-api
-    chart_ref: '{{ local_charts }}/develop/ldr'
+    chart_ref: '{{ local_charts }}/develop/linked-data-repository'
     release_namespace: linked-data-repository
     create_namespace: true
