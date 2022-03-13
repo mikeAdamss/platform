@@ -25,6 +25,8 @@ There are some groupings of infrastructure components that we probably _don't_ w
 
 These more light weight single use provision+orchestration stacks can also be defined within this repo (e.g`./data-pipelines`).
 
+**TODO: an example of this**.
+
 ## Stack
 
 We are using three principle infrastructure as code tools.
