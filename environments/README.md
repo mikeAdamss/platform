@@ -13,7 +13,10 @@ We are defining an application environment as a distinct collection of infrastru
 
 ## How does it work?
 
-If you look in `./terraform/vars/` you'll see (for example) a `develop.tfvars` that's holding the variables used to provision up the develop environment. You can create as many alternations of this as you need environemnts. The readme inside of `./terraform` explains how to pass these variable files into a teraform run. 
+If you look in `./terraform/vars/` you'll see (for example) a `develop.tfvars` that's holding the variables used to provision the develop environment. You can create as many alternations of this as you need (or want to pay for) environments. The readme inside of `./terraform` explains how to pass these variable files into a teraform run. 
 
-If you look in `./ansaible/vars/` you'll see (for example) a `develop.json` that's holding the variables used to orchestrate the develop environment. You can create as many alternations of this as you need environemnts. The readme inside of `./ansible` explains how to pass these variable files into a teraform run.
+If you look in `./ansaible/vars/` you'll see (for example) a `develop.json` that's holding the variables used to orchestrate the develop environment. You can create as many alternations of this as you need environments. The readme inside of `./ansible` explains how to pass these variable files into a terraform run.
 
+## Usage
+
+Look in the appropriate sub directories.

@@ -48,4 +48,9 @@ A tool for defining indivdual application deployments via kubernetes.
 
 The terraform and ansible code is defined within appropriate sub directories of a given purpose (i.e for environments look in `./environments/terraform` and `./environments/ansible`).
 
-I've defined the `helm` charts within a `helm` sub directory of the appropriate `/ansible` sub diectories, this is purely a convenience for relatively referencing locally defined charts from within the ansible playbooks.
+I've defined the `helm` charts within a `helm` sub directory of the appropriate `/ansible` sub dierctories, this is purely a convenience for relatively referencing locally defined charts from within the ansible playbooks.
+
+
+## Usage
+
+Instructions on using the different parts of the stack are include via readmes in the apropriate sub directories.
