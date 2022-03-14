@@ -30,5 +30,5 @@ Provided that you've configured or will be using an environments worth of config
 - (2) An appropraite `ansible/vars/<ENV NAME>.json` file.
 - (3) Per-application helm charts in `ansible/helm/<ENV NAME>/*`
 
-Then a standard run of terraform followed by a standard run of ansible should fully provision an environment. See the appropriate `README`'s for how to setup and run them.
+Then a standard run of terraform followed by a standard run of ansible should fully provision and orchestrate an environment. See the appropriate `README`'s for how to setup and run them.
 
