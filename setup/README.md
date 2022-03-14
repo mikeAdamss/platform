@@ -22,13 +22,6 @@ terraform {
 }
 ```
 
-
-
-
-    - b.) will output `../../terraform/backend.tf` which tells terraform where to look for said state on gcp.
-
-**IMPORTANT** - doing this will override the contents of `../terraform/backend.tf` (the thing that defines _which_ bucket worth of teraform remote state you're connecting to). This will need to be accounted for if we ever try and run multiple accounts from the same branch.
-
 ## Spinning up a new envionment
 
 Provided that you've configured or will be using an environments worth of configuration, consisting of:
