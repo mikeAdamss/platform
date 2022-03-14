@@ -16,7 +16,7 @@ The contents of `./environments/terraform/backend.tf` are as follows:
 ```
 terraform {
  backend "gcs" {
-   bucket  = "stone-facility-343810"
+   bucket  = "<PROJECT_ID>"
    prefix  = "environments
  }
 }
