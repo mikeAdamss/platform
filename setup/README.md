@@ -16,18 +16,11 @@ The contents of `./environments/terraform/backend.tf` are as follows:
 ```
 terraform {
  backend "gcs" {
-   bucket  = "stone-facility-343810"
+   bucket  = "<PROJECT_ID>"
    prefix  = "environments
  }
 }
 ```
-
-
-
-
-    - b.) will output `../../terraform/backend.tf` which tells terraform where to look for said state on gcp.
-
-**IMPORTANT** - doing this will override the contents of `../terraform/backend.tf` (the thing that defines _which_ bucket worth of teraform remote state you're connecting to). This will need to be accounted for if we ever try and run multiple accounts from the same branch.
 
 ## Spinning up a new envionment
 
@@ -37,5 +30,5 @@ Provided that you've configured or will be using an environments worth of config
 - (2) An appropraite `ansible/vars/<ENV NAME>.json` file.
 - (3) Per-application helm charts in `ansible/helm/<ENV NAME>/*`
 
-Then a standard run of terraform followed by a standard run of ansible should fully provision an environment. See the appropriate `README`'s for how to setup and run them.
+Then a standard run of terraform followed by a standard run of ansible should fully provision and orchestrate an environment. See the appropriate `README`'s for how to setup and run them.
 
