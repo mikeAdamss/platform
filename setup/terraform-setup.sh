@@ -59,5 +59,5 @@ gcloud iam service-accounts keys create "${HOME}/.credentials/terraform.json" --
 echo ""
 echo "---- IMPORTANT ----"
 echo "Credentials file created as: ${HOME}/.credentials/terraform.json"
-echo "Please point to client email within this file with the env var GOOGLE_CREDENTIALS (for ansible)"
-echo "Also specify the client email within the file with env var TF_VAR_terraform_service_account (for terraform)."
+echo "Please point to client email within this file with the env var GCP_SERVICE_ACCOUNT_FILE (for ansible)"
+echo "Also specify the CLIENT EMAIL specified within this file with env var TF_VAR_terraform_service_account (for terraform)."

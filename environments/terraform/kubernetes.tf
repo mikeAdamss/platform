@@ -10,15 +10,16 @@ provider "kubernetes" {
 }
 
 module "gke" {
+
   source                     = "terraform-google-modules/kubernetes-engine/google"
   project_id                 = var.project_id
-  name                       = format("gke-%s", var.environment_label)
+  name                       = "gke-${var.environment_label}"
   region                     = var.region
   zones                      = var.zones
   network                    = google_compute_network.gke_vpc.name
   subnetwork                 = google_compute_subnetwork.gke_subnet.name
-  ip_range_pods              = format("gke-pods-ip-range-%s", var.environment_label)
-  ip_range_services          = format("gke-services-ip-range-%s", var.environment_label)
+  ip_range_pods              = "gke-pods-ip-range-${var.environment_label}"
+  ip_range_services          = "gke-services-ip-range-${var.environment_label}"
   http_load_balancing        = true
   network_policy             = false
   horizontal_pod_autoscaling = true
@@ -30,7 +31,7 @@ module "gke" {
 
   node_pools = [
     {
-      name                      = format("default-node-pool-%s", var.environment_label)
+      name                      = "node-pool-${var.environment_label}"
       machine_type              = var.gke_node_machine_type
       node_locations            = var.node_locations
       min_count                 = var.node_min_count
@@ -43,6 +44,7 @@ module "gke" {
       auto_upgrade              = true
       preemptible               = false
       initial_node_count        = var.node_initial_node_count
+      labels = var.environment_label
     },
   ]
 
@@ -55,7 +57,9 @@ module "gke" {
   }
 
   node_pools_labels = {
-    all = {}
+    all = {
+    "environment" = var.environment_label
+  }
 
   }
 
@@ -63,7 +67,7 @@ module "gke" {
     all = {}
 
     default-node-pool = {
-      node-pool-metadata-custom-value = format("node-pool-%s", var.environment_label)
+      node-pool-metadata-custom-value = "node-pool-${var.environment_label}"
     }
   }
 
@@ -72,7 +76,7 @@ module "gke" {
 
     default-node-pool = [
       {
-        key    = format("default-node-pool-%s", var.environment_label)
+        key    = "node-pool-${var.environment_label}"
         value  = true
         effect = "PREFER_NO_SCHEDULE"
       },
@@ -83,7 +87,7 @@ module "gke" {
     all = []
 
     default-node-pool = [
-      format("default-node-pool-%s", var.environment_label),
+      "node-pool-${var.environment_label}",
     ]
   }
 }

@@ -1,9 +1,0 @@
----
-plugin: gcp_compute
-projects:
-  - stone-facility-343810
-auth_kind: serviceaccount
-filter: label.owner:develop
-service_account_file: /Users/michaeladams/.credentials/terraform.json
-filters:
-  - labels.environment=develop

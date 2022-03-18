@@ -1,0 +1,8 @@
+---
+
+plugin: gcp_compute
+projects:
+  - stone-facility-343810
+auth_kind: serviceaccount
+filters:
+  - labels.environment=trial

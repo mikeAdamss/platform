@@ -9,6 +9,7 @@ license = "MIT"
 python = "^3.9"
 ansible = "^5.4.0"
 kubernetes = "^23.3.0"
+requests = "^2.27.1"
 
 [tool.poetry.dev-dependencies]
 

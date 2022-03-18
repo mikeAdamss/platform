@@ -2,9 +2,8 @@
 
 # Install things that much exist in all cluster/environment
 - name: Deploy/Ensure kubernetes applications
-  hosts: localhost  
+  hosts: localhost
   gather_facts: true  
 
-  # TODO: must be some way to map the whole list directly
-  roles: 
-    - "{{ env_info.ansible_role_list[0] }}"
+  roles:
+    - develop/linked-data-repository

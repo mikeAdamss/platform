@@ -1,8 +1,0 @@
-{
-    "env_info": {
-        "label": "develop",
-        "ansible_role_list": [
-            "develop/linked-data-repository"
-        ]
-    }
-}
