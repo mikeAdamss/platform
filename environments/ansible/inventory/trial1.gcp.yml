@@ -5,4 +5,4 @@ projects:
   - stone-facility-343810
 auth_kind: serviceaccount
 filters:
-  - labels.environment=trial
+  - labels.environment=trial1

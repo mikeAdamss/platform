@@ -1,4 +1,4 @@
-environment_label = "trial2"
+environment_label = "trial1"
 project_id = "stone-facility-343810"
 
 # With networking, try to keep the convention of changing the

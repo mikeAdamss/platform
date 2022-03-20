@@ -39,7 +39,7 @@ An declarative orchestration tool that can interact directly with GCP infrastruc
 
 Simply put, while terraform will get you servers and cluster, its ansible that will do any required install and setup and put those servers and clusters into the desired _ready state_.
 
-**Note:** it's important to understand that while this idea of a _ready state_ is required for provisioning (and syncronising) environments, it also means ansible can be used as a _very_ powerful disaster recovery or quick fix tool as we can _enforce_ that _ready_state_ on demand.
+**Note:** it's important to understand that while this idea of a _ready state_ is required for provisioning (and syncronising) environments, it also means ansible can be used as a _very_ powerful disaster recovery or quick fix tool as we can _enforce_ that _ready state_ on demand.
 
 
 **helm**:

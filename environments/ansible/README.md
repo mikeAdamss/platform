@@ -22,15 +22,30 @@ Setup kubectl cluster credentials:
 - 4.) use 1 to authorise 3 to a given cluster via:
     - `gcloud container clusters get-credentials <CLUSTER-NAME> --region <REGION>`
 
-_Example cluster name `gke-trial`. It's always `gke-<ENVIONMENT_NAME>`._
+_Example cluster name `gke-trial`. It's always `gke-<ENVIRONMENT_NAME>`._
 
 ## Usage
 
 First, cd into this directory, then run the command:
 
-`ansible-playbook -i ./inventory/trial.gcp.yml ./playbook.yml"`. Change `trial` to the name of the environment you are orchestrating - **IMPORTANT**, when you create a new dynamic inventory in `./inventory` be sure to change the filter name appropriately.
+`ansible-playbook -i ./inventory/trial1.gcp.yml ./playbook.yml"`. Change `trial1` to the name of the environment you are orchestrating.
 
-**Note: until I sort the TODO earlier on this document, you'll need to have authenticated kubectl with the cluster of the envionment you're specifying, as per baove section on "Setup kubectl cluster credentials".**
+**Note: until I sort the TODO earlier on this document, you'll need to have authenticated kubectl with the cluster of the environment you're specifying, as per baove section on "Setup kubectl cluster credentials".**
 
-This command can also be used force the cluster to a compliant "all lights are green" state as a quick fix in the event of any issues or outages.
+This command can also be used to (likely, though depending on the underlying issue) force an enviromments worth of infrastructure to a compliant "all lights are green" state as a quick fix in the event of any issues or outages.
  
+
+ ## How it works
+
+The subset of out infrastrcuture you're running ansible against is defined within the relevent `./inventory` file. The approach is to filter by the environment label applied to each infrastructure component (these labels are by teraform during provisioning).
+
+When `playbook.yml` is called against this subset of infrastructure it will run each of the sets of instructions (roles) listed within.
+
+If you drill into the appropriate sub directory in `./roles` you'll get to the `main.yml` defining what's actually happening when that role is called.
+
+The key point is that this yml is really just a wrapper for underlying python functions. As a rough guide, the line beneath `- name:` is the name of a function, everything after is `**kwargs` passed to this function.
+
+Beyond that, ansible is very well documented resource, with information on indovidual modeules availible here: [https://docs.ansible.com/ansible/latest/collections/ansible/builtin/debug_module.html](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/debug_module.html)
+
+
+
