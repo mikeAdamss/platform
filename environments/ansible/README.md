@@ -18,11 +18,8 @@ Install Ansible Modules
 Setup kubectl cluster credentials:
 - 1.) install [gcloud](https://cloud.google.com/sdk/docs/install-sdk) if you haven't yet.
 - 2.) authorise your local machine with `gcloud auth login`
-- 3.) install `kubectl` via gcloud `gcloud components install kubectl`
-- 4.) use 1 to authorise 3 to a given cluster via:
-    - `gcloud container clusters get-credentials <CLUSTER-NAME> --region <REGION>`
-
-_Example cluster name `gke-trial`. It's always `gke-<ENVIRONMENT_NAME>`._
+- 3.) install `kubectl` via gcloud `gcloud components install kubectl` if you haven't yet.
+- 4.) run `make env=<ENV> auth` where `ENV` is the environment you wish to interact with, i.e "trial1".
 
 ## Usage
 
@@ -46,6 +43,3 @@ If you drill into the appropriate sub directory in `./roles` you'll get to the `
 The key point is that this yml is really just a wrapper for underlying python functions. As a rough guide, the line beneath `- name:` is the name of a function, everything after is `**kwargs` passed to this function.
 
 Beyond that, ansible is very well documented resource, with information on indovidual modeules availible here: [https://docs.ansible.com/ansible/latest/collections/ansible/builtin/debug_module.html](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/debug_module.html)
-
-
-

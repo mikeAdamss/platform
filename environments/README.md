@@ -13,10 +13,14 @@ We are defining an application environment as a distinct collection of infrastru
 
 ## How does it work?
 
-If you look in `./terraform/vars/` you'll see (for example) a `trial.tfvars` that's holding the variables used to provision a trial environment used for platform development/trialling. You can create as many variations of this single file input as you need (or want to pay for) environments, this configuration allows you to nuance environment resources based on purpose (for example, a cluster in a production environment would likely have significantly more RAM, cpu and nodes than that of a test envionment). The readme inside of `./terraform` explains how to pass a variable file into a teraform run. 
+If you look in `./terraform/vars/` you'll see (for example) a `trial1.tfvars` that's holding the variables used to provision a trial environment used for platform development/trialling. You can create as many variations of this single file input as you need (or want to pay for) environments, this configuration allows you to nuance environment resources based on purpose (for example, a cluster in a production environment would likely have significantly more RAM, cpu and nodes than that of a test envionment). The readme inside of `./terraform` explains how to pass a variable file into a teraform run. 
 
 When this environment is created, the infrastructure resources within are labelled according to their environment. This allows us to run `ansible` against a single, specific envionments worth of resources to create our `ready state`. Guidance for this is included via a readme in `./ansible`.
 
 ## Usage
 
 Look in the appropriate sub directories. When creating a new environment (or recreating one you've previously torn down) you'll need to always run terraform before ansible.
+
+## Monitoring
+
+I've added some baci information for helping with monitoring and debugging a deployed envionments worth of infrastructure. Please see `./ansible/helpers.md`.

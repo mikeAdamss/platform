@@ -1,0 +1,21 @@
+---
+
+# better dif engine to see if a change needs to be applied
+- name: Ensure Helm Diff
+  kubernetes.core.helm_plugin:
+    state: present
+    plugin_path: https://github.com/databus23/helm-diff
+
+# TODO - do we want this local for reliability?
+- name: Add bitnami repo as a source of charts
+  kubernetes.core.helm_repository:
+    name: bitnami
+    repo_url: https://charts.bitnami.com/bitnami
+
+- name: Deploy nginx ingress controller
+  kubernetes.core.helm:
+    name: nginx-ingress
+    state: present
+    release_namespace: kube-system
+    chart_ref: bitnami/nginx-ingress-controller
+    wait: true
