@@ -1,5 +1,7 @@
 # Platform
 
+**WORK IN PROGRESS** - in some case the documentation may be ahead of the code, I know what I'm trying to do, its just not fully done yet.
+
 ## Use Cases
 
 ### Use Case 1: Application Environments
