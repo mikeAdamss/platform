@@ -24,11 +24,5 @@ terraform {
 
 ## Spinning up a new envionment
 
-Provided that you've configured or will be using an environments worth of configuration, consisting of:
-    
-- (1) An appropriate `terraform/vars/<ENV NAME>.ftvars` file.
-- (2) An appropraite `ansible/vars/<ENV NAME>.json` file.
-- (3) Per-application helm charts in `ansible/helm/<ENV NAME>/*`
-
-Then a standard run of terraform followed by a standard run of ansible should fully provision and orchestrate an environment. See the appropriate `README`'s for how to setup and run them.
+Provided that you've configured or will be using an environments worth of configuration via  `terraform/vars/<ENV NAME>.ftvars` file and created an appropriate `environments/ansible/inventory` entry then a standard run of terraform followed by a standard run of ansible should fully provision and orchestrate an environment. See the appropriate `README`'s for how to setup and run them.
 
