@@ -1,11 +1,5 @@
 # Ansible
 
-## A Note On Yaml
-
-`Ansible` and `Kubernetes` both use yaml for declarative purposes but are very different things under the hood.
-
-Please maintain the convention of helm charts and resources (the kubernetes flavoured yaml) in `./helm` and `./resources` respectively and keep the ansible yaml files (beyond the root playbook) within `./ansible`.
-
 ## Setup
 
 Setup Python Dependencies(within repo base)
