@@ -55,6 +55,7 @@ variable "node_max_count" {
 variable "terraform_service_account" {
   description = "Terraform managed service account email"
   type        = string
+  default = "terraform@stone-facility-343810.iam.gserviceaccount.com"
 }
 
 variable "gke_subnet_ip_cidr_range" {

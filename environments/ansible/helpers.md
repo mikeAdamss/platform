@@ -1,6 +1,6 @@
 # Helpers
 
-Some conveniences for helping wiht monitoring and administrating environments.
+Some conveniences for helping with monitoring and administrating environments.
 
 ## Kubernetes
 

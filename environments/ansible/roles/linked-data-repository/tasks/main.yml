@@ -1,19 +1,56 @@
 ---
 
-- name: Set dir for relative helm chart references
-  set_fact: local_charts='{{ lookup('env', 'PWD') }}/helm'
+# NOTE:
+# using the old linked data repo image just as an example
 
-# better dif engine to see if a change needs to be applied
-- name: Ensure Helm Diff
-  kubernetes.core.helm_plugin:
+- name: Create a k8s namespace
+  kubernetes.core.k8s:
+    name: linked-data-repository
+    api_version: v1
+    kind: Namespace
     state: present
-    plugin_path: https://github.com/databus23/helm-diff
 
-- name: Deploy latest version of the api inside the linked-data-repository namespace
-  kubernetes.core.helm:
+- name: Ensure a deployment for linked-data-repository
+  kubernetes.core.k8s:
     state: present
-    force: true
-    name: ldr-api
-    chart_ref: '{{ local_charts }}/develop/linked-data-repository'
-    release_namespace: linked-data-repository
-    create_namespace: true
+    definition:
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: linked-data-repository-deployment
+        namespace: linked-data-repository
+        labels:
+          app: linked-data-repository
+      spec:
+        replicas: 1
+        selector:
+          matchLabels:
+            app: linked-data-repository
+        template:
+          metadata:
+            labels: 
+              app: linked-data-repository
+              namepsace: linked-data-repository
+          spec:
+            containers:
+              - name: linked-data-repository-api
+                image: gsscogs/linked-data-repository:develop
+                ports:
+                  - containerPort: 3000
+
+- name: Ensure service for exposing linked data repository api
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: linked-data-repository-service
+        namespace: linked-data-repository
+      spec:
+        selector:
+          app: linked-data-repository
+        ports:
+          - protocol: TCP
+            port: 3000
+            targetPort: 3200

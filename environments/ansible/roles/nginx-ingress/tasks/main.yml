@@ -6,7 +6,13 @@
     state: present
     plugin_path: https://github.com/databus23/helm-diff
 
-# TODO - do we want this local for reliability?
+- name: Ensure the ingress namespace exists
+  k8s:
+    name: ingress
+    api_version: v1
+    kind: Namespace
+    state: present
+
 - name: Add bitnami repo as a source of charts
   kubernetes.core.helm_repository:
     name: bitnami
@@ -16,6 +22,16 @@
   kubernetes.core.helm:
     name: nginx-ingress
     state: present
-    release_namespace: kube-system
+    force: true
+    release_namespace: ingress
     chart_ref: bitnami/nginx-ingress-controller
     wait: true
+
+- name: Set shared resource/definitions directory
+  set_fact: resource_dir='{{ lookup('env', 'PWD') }}/resources'
+
+- name: Ensure a kubernetes resource defining the behaviour of the ingress controller
+  k8s:
+    state: present
+    force: true
+    src: '{{ resource_dir }}//ingress.yml'

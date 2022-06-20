@@ -21,6 +21,10 @@ When this environment is created, the infrastructure resources within are labell
 
 Look in the appropriate sub directories. When creating a new environment (or recreating one you've previously torn down) you'll need to always run terraform before ansible.
 
-## Monitoring
+## Adding a new application
 
-I've added some baci information for helping with monitoring and debugging a deployed envionments worth of infrastructure. Please see `./ansible/helpers.md`.
+A walkthrough of how to add a new applicaton to a running kubernetes clusters can be viewing in `./adding-applications.md`.
+
+## Helpers
+
+I've added some basic information for helping with monitoring and debugging a deployed envionments worth of infrastructure. Please see `./ansible/helpers.md`.

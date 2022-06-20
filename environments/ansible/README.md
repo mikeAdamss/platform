@@ -1,5 +1,10 @@
 # Ansible
 
+## A Note On Yaml
+
+`Ansible` and `Kubernetes` both use yaml for declarative purposes but are very different things under the hood.
+
+Please maintain the convention of helm charts and resources (the kubernetes flavoured yaml) in `./helm` and `./resources` respectively and keep the ansible yaml files (beyond the root playbook) within `./ansible`.
 
 ## Setup
 
@@ -27,14 +32,14 @@ First, cd into this directory, then run the command:
 
 `ansible-playbook -i ./inventory/trial1.gcp.yml ./playbook.yml"`. Change `trial1` to the name of the environment you are orchestrating.
 
-**Note: until I sort the TODO earlier on this document, you'll need to have authenticated kubectl with the cluster of the environment you're specifying, as per baove section on "Setup kubectl cluster credentials".**
+**Note: until I sort the TODO earlier on this document, you'll need to have authenticated kubectl with the cluster of the environment you're specifying, as per above section on "Setup kubectl cluster credentials".**
 
 This command can also be used to (likely, though depending on the underlying issue) force an enviromments worth of infrastructure to a compliant "all lights are green" state as a quick fix in the event of any issues or outages.
  
 
  ## How it works
 
-The subset of out infrastrcuture you're running ansible against is defined within the relevent `./inventory` file. The approach is to filter by the environment label applied to each infrastructure component (these labels are by teraform during provisioning).
+The subset of out infrastructure you're running ansible against is defined within the relevent `./inventory` file. The approach is to filter by the environment label applied to each infrastructure component (these labels are by terraform during provisioning).
 
 When `playbook.yml` is called against this subset of infrastructure it will run each of the sets of instructions (roles) listed within.
 

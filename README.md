@@ -1,6 +1,8 @@
 # Platform
 
-**WORK IN PROGRESS** - in some case the documentation may be ahead of the code, I know what I'm trying to do, its just not fully done yet.
+**NOTE 1** - this is intended as an **example only** and is a **work in progress** while I figure a few things out, so in some case the documentation may be ahead of the code or functionality won't be quite what it needs to be yet. Simply put, I know what I'm trying to do, its just not fully done yet.
+
+**NOTE 2** - This project ID used during initial development is hard coded here and there ("stone-facility-..." - which no longer exists now the repo is public). You will have to replace these instances with your own project id if you wish to run the IAC code yourself. I'll trade them out for an env var in due course.
 
 ## Use Cases
 
@@ -15,7 +17,7 @@ This means we need _composable environments_. So shared infrastructure as code d
 
 Simple put `infrastructure as code + configuration == environment`. 
 
-The setup in `./environment` provides this facility. See the included readme's for more details.
+The setup in `./environments` provides this facility. See the included readme's for more details.
 
 ### Use Case 2: Single Instance Infrastructure
 
@@ -31,7 +33,7 @@ These more light weight single use provision+orchestration stacks can also be de
 
 ## Stack
 
-We are using three principle infrastructure as code tools.
+We are using two principle infrastructure as code tools.
 
 ### terraform
 A state aware tool for declaratively provisioning infrastructure components from google cloud.
@@ -44,29 +46,10 @@ Simply put, while terraform will get you servers and cluster, its ansible that w
 **Note:** it's important to understand that while this idea of a _ready state_ is required for provisioning (and syncronising) environments, it also means ansible can be used as a _very_ powerful disaster recovery or quick fix tool as we can _enforce_ that _ready state_ on demand.
 
 
-**helm**:
-A tool for defining indivdual application deployments via kubernetes.
-
-
 ## Conventions
 
 The terraform and ansible code is defined within appropriate sub directories of a given purpose (i.e for environments look in `./environments/terraform` and `./environments/ansible`).
 
-We're currently defining the `helm` charts within a `helm` sub directory of the appropriate `/ansible` sub dierctories, this is purely a convenience for relatively referencing locally defined charts from within the ansible playbooks.
-
-
 ## Usage
 
 Instructions on using the different parts of the stack are include via readmes in the appropriate sub directories.
-
-## FAQ
-
-**Why use ansible to load helm charts to kubernetes?**
-
-.... when you can just use helm?
-
-- its declarative.
-- it wraps helm, so you're doing the same thing anyway.
-- it can orchestrate **all** GCP resources as well as non GCP resources (for example, it can connect to and configure off the shelf database images) not just kubernetes.
-- its a (possibly _the_) industry standard orchestration tool with a huge selection of high quality, well documented modules and extensions.
-- under the hood is composed of (and extended via) simple python modules, given our team skillset there's not much we cant automate should we want to.
